@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PyPassGen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-6">
+  <div class="max-w-lg mx-auto bg-white rounded-lg shadow-md p-6">
+    <h1 class="text-2xl font-bold mb-4">🔐 PyPassGen Generator</h1>
+    <form method="post" class="space-y-4">
+      <input type="number" name="length" placeholder="Password Length" class="w-full border p-2 rounded" required />
+
+      <label><input type="checkbox" name="digits" checked class="mr-2" />Include Digits</label><br />
+      <label><input type="checkbox" name="specials" checked class="mr-2" />Include Specials</label><br />
+
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Generate</button>
+    </form>
+
+    {% if password %}
+      <div class="mt-4">
+        <h2 class="text-lg font-semibold">🔑 New Password：</h2>
+        <p class="text-xl font-mono bg-gray-200 p-2 rounded mt-2">{{ password }}</p>
+      </div>
+    {% endif %}
+
+    {% if history %}
+      <div class="mt-6">
+        <h2 class="text-lg font-semibold">📜 Generation History：</h2>
+        <ul class="list-disc list-inside">
+          {% for item in history %}
+            <li class="font-mono">{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
